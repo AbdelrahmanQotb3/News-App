@@ -1,10 +1,10 @@
-class SourceResponse {
+class SourcesResponse {
   // Non-nullable fields initialized via constructor or fromJson.
   String? _status;
   List<Sources>? _sources;
 
   // Constructor with named optional parameters.
-  SourceResponse({
+  SourcesResponse({
     String? status,
     List<Sources>? sources,
   }) {
@@ -13,7 +13,7 @@ class SourceResponse {
   }
 
   // Named constructor for initializing from JSON.
-  SourceResponse.fromJson(dynamic json) {
+  SourcesResponse.fromJson(dynamic json) {
     _status = json['status'];
     if (json['sources'] != null) {
       _sources = [];
@@ -24,11 +24,11 @@ class SourceResponse {
   }
 
   // CopyWith method for immutability.
-  SourceResponse copyWith({
+  SourcesResponse copyWith({
     String? status,
     List<Sources>? sources,
   }) =>
-      SourceResponse(
+      SourcesResponse(
         status: status ?? _status,
         sources: sources ?? _sources,
       );
