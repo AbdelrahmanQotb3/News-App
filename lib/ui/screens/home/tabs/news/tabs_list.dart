@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/Data/api_manager.dart';
 import 'package:news_app/model/sourceResponse.dart';
+import 'package:news_app/ui/comman%20widgets/app_error.dart';
+import 'package:news_app/ui/comman%20widgets/app_loader.dart';
 
 class TabsList extends StatelessWidget {
   static String routeName = "TabsList";
@@ -12,30 +14,22 @@ class TabsList extends StatelessWidget {
         future: APIManager.loadTabsList(),
         builder: (context , snapshot){
           if(snapshot.hasError){
-            return errorView(snapshot.error.toString());
+            return appError(error: snapshot.error.toString());
           }else if(snapshot.hasData){
             return tabsList(snapshot.data!.sources!);
           }else{
-            return loadingView();
+            return appLoader();
           }
         }
     );
   }
 
-  Widget errorView(String error) {
-    return Column(
-      children: [
-        Text(error),
-        ElevatedButton(onPressed: (){}, child: Text("Refresh"))
-      ],
-    );
-  }
 
   Widget tabsList(List<Sources> sources) {
     return Text("Successfull API call");
   }
 
-  Widget loadingView() {
-    return Center(child: CircularProgressIndicator());
-  }
 }
+
+
+
