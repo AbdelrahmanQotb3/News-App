@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TabsDetails extends StatelessWidget {
-  static String routeName = "TabsDetails";
-  const TabsDetails({super.key});
+  final String sourceID ;
+  TabsDetails({super.key , required this.sourceID});
 
   @override
   Widget build(BuildContext context) {

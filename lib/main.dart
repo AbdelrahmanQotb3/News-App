@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       routes: {
         Home.routeName : (_) => Home(),
         TabsList.routeName : (_) => TabsList(),
-        TabsDetails.routeName : (_) => TabsDetails(),
         Settings.routeName : (_) => Settings()
       },
       initialRoute: Home.routeName,
