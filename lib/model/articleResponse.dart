@@ -7,10 +7,15 @@ class ArticleResponse {
     required String status,
     required num totalResults,
     required List<Article> articles,
+    required String message ,
+    required String code,
+
   }) {
     _status = status;
     _totalResults = totalResults;
     _articles = articles;
+    _code = code;
+    _message = message;
   }
 
   ArticleResponse.fromJson(dynamic json) {
@@ -29,6 +34,8 @@ class ArticleResponse {
   late String _status;
   late num _totalResults;
   late List<Article> _articles;
+  late String _message ;
+  late String _code;
 
   ArticleResponse copyWith({
     String? status,
@@ -39,6 +46,8 @@ class ArticleResponse {
         status: status ?? _status,
         totalResults: totalResults ?? _totalResults,
         articles: articles ?? _articles,
+        code: _code ,
+        message: _message
       );
 
   String get status => _status;
