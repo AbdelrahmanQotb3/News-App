@@ -25,8 +25,24 @@ class TabsDetails extends StatelessWidget {
   }
 
   Widget articlesList(List<Article> articles) {
-    return Container();
+    return ListView.builder(
+      itemCount: articles.length,
+      itemBuilder: (context , index){
+        return articleWidget(articles[index]);
+      },
+    );
 
+  }
+
+  Widget articleWidget(Article article) {
+    return Column(
+      children: [
+        Image.network(article.urlToImage ?? ""),
+        Text(article.source.name ?? ""),
+        Text(article.title ?? ""),
+        Text(article.publishedAt?? ""),
+      ],
+    );
   }
 
 
