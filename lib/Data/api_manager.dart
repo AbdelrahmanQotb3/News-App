@@ -24,7 +24,7 @@ abstract class APIManager{
 
   static Future<ArticleResponse> loadTabDetails(String sourceID) async{
     try {
-      Uri url = Uri.parse("https://newsapi.org/v2/everything?apiKey=252ddd1becd44494a69378fa665e0d71&source=${sourceID}");
+      Uri url = Uri.parse("https://newsapi.org/v2/everything?apiKey=252ddd1becd44494a69378fa665e0d71&sources=${sourceID}");
       Response apiResponse = await get(url);
       ArticleResponse articleResponse = ArticleResponse.fromJson(jsonDecode(apiResponse.body));
       if(apiResponse.statusCode >= 200 && apiResponse.statusCode < 300){
