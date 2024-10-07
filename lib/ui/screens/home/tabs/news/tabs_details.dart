@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/Data/api_manager.dart';
+import 'package:news_app/model/articleResponse.dart';
+import 'package:news_app/ui/comman%20widgets/app_error.dart';
 
 class TabsDetails extends StatelessWidget {
   final String sourceID ;
@@ -6,6 +9,21 @@ class TabsDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return FutureBuilder(
+        future: APIManager.loadTabDetails(sourceID),
+        builder: (context, snapshot){
+          if(snapshot.hasError){
+            return appError(error: snapshot.error.toString());
+          }else if(snapshot.hasData){
+            return articlesList(snapshot.data!.articles);
+          }
+        }
+    );
   }
+
+  Widget articlesList(List<Article> articles) {
+
+  }
+
+
 }
