@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/ui/screens/home/tabs/category/categories_tab.dart';
 import 'package:news_app/ui/screens/home/tabs/home.dart';
 import 'package:news_app/ui/screens/home/tabs/news/tabs_details.dart';
 import 'package:news_app/ui/screens/home/tabs/news/tabs_list.dart';
@@ -19,7 +20,9 @@ class MyApp extends StatelessWidget {
       routes: {
         Home.routeName : (_) => Home(),
         TabsList.routeName : (_) => TabsList(),
-        Settings.routeName : (_) => Settings()
+        CategoriesTab.routeName : (_) => CategoriesTab(),
+        Settings.routeName : (_) => Settings(),
+
       },
       initialRoute: Home.routeName,
 
