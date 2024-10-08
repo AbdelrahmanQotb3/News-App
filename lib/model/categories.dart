@@ -27,7 +27,7 @@ class Categories{
         title: "Technology",
         imagePath: "assets/Politics.png",
         isLeftSided: false,
-        backgroundColor: Colors.blue),
+        backgroundColor: Colors.blue[900]!),
     Categories(
         backendId: "health",
         title: "Health",
