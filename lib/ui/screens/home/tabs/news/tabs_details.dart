@@ -5,19 +5,14 @@ import 'package:news_app/model/articleResponse.dart';
 import 'package:news_app/ui/comman%20widgets/app_error.dart';
 import 'package:news_app/ui/comman%20widgets/app_loader.dart';
 
-class TabsDetails extends StatefulWidget {
+class TabsDetails extends StatelessWidget {
   final String sourceID ;
   TabsDetails({super.key , required this.sourceID});
 
   @override
-  State<TabsDetails> createState() => _TabsDetailsState();
-}
-
-class _TabsDetailsState extends State<TabsDetails> {
-  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: APIManager.loadTabDetails(widget.sourceID),
+        future: APIManager.loadTabDetails(sourceID),
         builder: (context, snapshot){
           if(snapshot.hasError){
             return appError(error: snapshot.error.toString());
@@ -34,24 +29,35 @@ class _TabsDetailsState extends State<TabsDetails> {
     return ListView.builder(
       itemCount: articles.length,
       itemBuilder: (context , index){
-        return articleWidget(articles[index]);
+        return articleWidget(context,articles[index]);
       },
     );
 
   }
 
-  Widget articleWidget(Article article) {
+  Widget articleWidget(BuildContext context,Article article) {
     return Column(
       children: [
         CachedNetworkImage(
           imageUrl: article.urlToImage!,
-          placeholder: (_ , __)=> Center(child: CircularProgressIndicator()),
-          errorWidget: (_ , __ , ___) => Center(child: Icon(Icons.error)),
+          height: MediaQuery.of(context).size.height * 0.2,
+          placeholder: (_ , __)=> const Center(child: CircularProgressIndicator()),
+          errorWidget: (_ , __ , ___) => const Center(child: Icon(Icons.error)),
 
         ),
-        Text(article.source.name ?? ""),
-        Text(article.title ?? ""),
-        Text(article.publishedAt?? ""),
+        // Image.network(article.urlToImage!),
+        Text(article.source.name , textAlign: TextAlign.start,style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold
+        ),
+        ),
+        Text(article.title , textAlign: TextAlign.start,style: TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.w500
+        ),),
+        Text(article.publishedAt , textAlign: TextAlign.end,style: TextStyle(
+          fontSize: 12
+        ),),
       ],
     );
   }
