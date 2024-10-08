@@ -15,14 +15,16 @@ class CategoriesTab extends StatelessWidget {
           fontWeight: FontWeight.bold,
           fontSize: 14
         ),),
-        GridView.builder(
-            itemCount: Categories.categories.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            itemBuilder: (context , index){
-              return AppCategory(categories: Categories.categories[index]);
-            }
+        Expanded(
+          child: GridView.builder(
+              itemCount: Categories.categories.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              itemBuilder: (context , index){
+                return AppCategory(categories: Categories.categories[index]);
+              }
+          ),
         )
       ],
     );

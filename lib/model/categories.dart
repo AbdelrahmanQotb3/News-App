@@ -37,7 +37,7 @@ class Categories{
     Categories(
         backendId: "business",
         title: "Business",
-        imagePath: "assets/business.png",
+        imagePath: "assets/bussines.png",
         isLeftSided: false,
         backgroundColor: Colors.brown),
     Categories(

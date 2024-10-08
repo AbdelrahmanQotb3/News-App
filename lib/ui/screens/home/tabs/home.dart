@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/ui/screens/home/tabs/category/categories_tab.dart';
 import 'package:news_app/ui/screens/home/tabs/news/tabs_list.dart';
 
 class Home extends StatelessWidget {
@@ -13,7 +14,7 @@ class Home extends StatelessWidget {
         title: Text("News App" , style: TextStyle(fontSize: 20 , color: Colors.white ),),
         backgroundColor: Color(0xff39A552),
       ),
-      body: TabsList(),
+      body: CategoriesTab(),
     );
   }
 }
