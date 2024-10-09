@@ -26,17 +26,29 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "News App",
-            style: TextStyle(fontSize: 20, color: Colors.white),
+      child: WillPopScope(
+        onWillPop: () async{
+          if(body is CategoriesTab ){
+            return true;
+          }else{
+            setState(() {
+              body =CategoriesTab(onCategoryClick: onCategoryClick);
+            });
+            return false;
+          }
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(
+              "News App",
+              style: TextStyle(fontSize: 20, color: Colors.white),
+            ),
+            backgroundColor: Color(0xff39A552),
           ),
-          backgroundColor: Color(0xff39A552),
+          drawer: buildDrawer(),
+          body: body,
         ),
-        drawer: buildDrawer(),
-        body: body,
       ),
     );
   }
