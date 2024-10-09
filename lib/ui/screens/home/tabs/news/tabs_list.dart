@@ -7,9 +7,9 @@ import 'package:news_app/ui/screens/home/tabs/news/tabs_details.dart';
 import '../../../../../model/sourcesResponse.dart';
 
 class TabsList extends StatefulWidget {
-  static String routeName = "TabsList";
+  String categoryID;
 
-  const TabsList({super.key});
+  TabsList({super.key , required this.categoryID});
 
   @override
   State<TabsList> createState() => _TabsListState();
@@ -21,7 +21,7 @@ class _TabsListState extends State<TabsList> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: APIManager.loadTabsList(),
+        future: APIManager.loadTabsList(widget.categoryID),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return appError(error: snapshot.error.toString());

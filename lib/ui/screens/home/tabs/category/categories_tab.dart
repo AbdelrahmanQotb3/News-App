@@ -4,8 +4,8 @@ import 'package:news_app/model/categories.dart';
 import 'app_category.dart';
 
 class CategoriesTab extends StatelessWidget {
-  static String routeName = "CategoriesTab";
-  const CategoriesTab ({super.key});
+  final void Function(Categories) onCategoryClick;
+  const CategoriesTab ({super.key , required this.onCategoryClick});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,11 @@ class CategoriesTab extends StatelessWidget {
                 // mainAxisSpacing: 5,
               ),
               itemBuilder: (context , index){
-                return AppCategory(categories: Categories.categories[index]);
+                return InkWell(
+                    onTap: (){
+                      onCategoryClick(Categories.categories[index]);
+                    },
+                    child: AppCategory(categories: Categories.categories[index]));
               }
           ),
         )
