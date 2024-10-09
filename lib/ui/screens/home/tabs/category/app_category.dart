@@ -11,6 +11,8 @@ class AppCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(7),
+      margin: EdgeInsets.all(20),
       decoration: BoxDecoration(
           color: categories.backgroundColor,
           borderRadius: BorderRadius.only(
