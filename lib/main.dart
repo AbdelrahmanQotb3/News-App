@@ -19,8 +19,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         Home.routeName : (_) => Home(),
-        TabsList.routeName : (_) => TabsList(),
-        CategoriesTab.routeName : (_) => CategoriesTab(),
         Settings.routeName : (_) => Settings(),
 
       },
