@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Settings extends StatelessWidget {
+class SettingsTab extends StatelessWidget {
   static String routeName = "Settings";
-  const Settings({super.key});
+  const SettingsTab({super.key});
 
   @override
   Widget build(BuildContext context) {
