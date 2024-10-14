@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:news_app/Data/api_manager.dart';
 import 'package:news_app/ui/comman%20widgets/app_error.dart';
 import 'package:news_app/ui/comman%20widgets/app_loader.dart';
-import 'package:news_app/ui/screens/home/tabs/news/tabs_details.dart';
+import 'package:news_app/ui/screens/home/tabs/news/TabsDetails/tabs_details.dart';
 
-import '../../../../../model/sourcesResponse.dart';
+import '../../../../../../model/sourcesResponse.dart';
 
 class TabsList extends StatefulWidget {
   String categoryID;
