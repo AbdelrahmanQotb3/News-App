@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/model/categories.dart';
 import 'package:news_app/ui/screens/home/tabs/category/categories_tab.dart';
-import 'package:news_app/ui/screens/home/tabs/news/tabs_list.dart';
+import 'package:news_app/ui/screens/home/tabs/news/TabsList/tabs_list.dart';
 import 'package:news_app/ui/screens/home/tabs/settings/settings_tab.dart';
 
 class Home extends StatefulWidget {
