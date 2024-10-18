@@ -14,9 +14,11 @@ class TabsListViewModel extends ChangeNotifier {
       SourceResponse sourceResponse = await APIManager.loadTabsList(categoryID);
       state = TabsListState.success;
       sources = sourceResponse.sources!;
+      notifyListeners();
     } catch (exception) {
       state = TabsListState.error;
       errorMessage = exception.toString();
+      notifyListeners();
     }
   }
 }
