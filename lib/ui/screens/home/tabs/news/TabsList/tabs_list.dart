@@ -3,6 +3,8 @@ import 'package:news_app/Data/api_manager.dart';
 import 'package:news_app/ui/comman%20widgets/app_error.dart';
 import 'package:news_app/ui/comman%20widgets/app_loader.dart';
 import 'package:news_app/ui/screens/home/tabs/news/TabsDetails/tabs_details.dart';
+import 'package:news_app/ui/screens/home/tabs/news/TabsList/tabs_list_view_model.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../../model/sourcesResponse.dart';
 
@@ -17,20 +19,36 @@ class TabsList extends StatefulWidget {
 
 class _TabsListState extends State<TabsList> {
   int currentTabIndex = 0;
+  TabsListViewModel viewModel = TabsListViewModel();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    viewModel.loadTabsList(widget.categoryID);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: APIManager.loadTabsList(widget.categoryID),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return appError(error: snapshot.error.toString());
-          } else if (snapshot.hasData) {
-            return tabsList(snapshot.data!.sources!);
-          } else {
-            return appLoader();
-          }
-        });
+    return ChangeNotifierProvider(
+      create: (_) => viewModel,
+      child: Builder(
+        builder: (context){
+          viewModel = Provider.of(context , listen: true); /// the most important line
+        if(viewModel.state == TabsListState.loading){
+          return const appLoader();
+        }else if(viewModel.state == TabsListState.success){
+          return tabsList(viewModel.sources);
+        }else{
+          return appError(error: viewModel.errorMessage , onRefreshClick: (){
+            viewModel.loadTabsList(widget.categoryID);
+          },);
+        }
+      },
+      ),
+    );
+
+
   }
 
   Widget tabsList(List<Sources> sources) {

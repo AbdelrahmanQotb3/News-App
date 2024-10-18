@@ -4,24 +4,45 @@ import 'package:news_app/Data/api_manager.dart';
 import 'package:news_app/model/articleResponse.dart';
 import 'package:news_app/ui/comman%20widgets/app_error.dart';
 import 'package:news_app/ui/comman%20widgets/app_loader.dart';
+import 'package:news_app/ui/screens/home/tabs/news/TabsDetails/tabs_details_view_model.dart';
+import 'package:provider/provider.dart';
 
-class TabsDetails extends StatelessWidget {
+class TabsDetails extends StatefulWidget {
   final String sourceID ;
   TabsDetails({super.key , required this.sourceID});
+  
 
   @override
+  State<TabsDetails> createState() => _TabsDetailsState();
+}
+
+class _TabsDetailsState extends State<TabsDetails> {
+  TabsDetailsViewModel viewModel = TabsDetailsViewModel();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    viewModel.loadArticles(widget.sourceID);
+  }
+  @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: APIManager.loadTabDetails(sourceID),
-        builder: (context, snapshot){
-          if(snapshot.hasError){
-            return appError(error: snapshot.error.toString());
-          }else if(snapshot.hasData){
-            return articlesList(snapshot.data!.articles);
-          }else{
+    return ChangeNotifierProvider(
+      create: (_) => viewModel,
+      child: Builder(
+        builder: (context){
+          viewModel = Provider.of(context , listen: true);
+          if(viewModel.state == TabsDetailsState.loading){
             return appLoader();
+          }else if(viewModel.state == TabsDetailsState.success){
+            return articlesList(viewModel.articles);
+          }else{
+            return appError(error: viewModel.errorMessage , onRefreshClick:(){
+              viewModel.loadArticles(widget.sourceID);
+            },);
           }
-        }
+        },
+      ),
     );
   }
 
@@ -62,3 +83,4 @@ class TabsDetails extends StatelessWidget {
     );
   }
 }
+
