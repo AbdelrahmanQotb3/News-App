@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:news_app/model/articleResponse.dart';
 
-import '../model/sourcesResponse.dart';
+import '../../../../../model/sourcesResponse.dart';
 
-abstract class APIManager{
+class NewsRemoteDateSource{
   static String apiKey = "252ddd1becd44494a69378fa665e0d71";
-  static Future<SourceResponse> loadTabsList(String categoryID) async {
+   Future<SourceResponse> loadTabsList(String categoryID) async {
     try{
       Uri url = Uri.parse("https://newsapi.org/v2/top-headlines/sources?apiKey=$apiKey&category=$categoryID");
       Response response = await get(url);
@@ -23,7 +23,7 @@ abstract class APIManager{
     }
   }
 
-  static Future<ArticleResponse> loadTabDetails(String sourceID) async{
+   Future<ArticleResponse> loadTabDetails(String sourceID) async{
     try {
       Uri url = Uri.parse("https://newsapi.org/v2/everything?apiKey=$apiKey&sources=${sourceID}");
       Response apiResponse = await get(url);
