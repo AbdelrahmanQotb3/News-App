@@ -4,8 +4,14 @@ import 'package:news_app/ui/screens/home/tabs/home.dart';
 import 'package:news_app/ui/screens/home/tabs/news/TabsDetails/tabs_details.dart';
 import 'package:news_app/ui/screens/home/tabs/news/TabsList/tabs_list.dart';
 import 'package:news_app/ui/screens/home/tabs/settings/settings_tab.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
