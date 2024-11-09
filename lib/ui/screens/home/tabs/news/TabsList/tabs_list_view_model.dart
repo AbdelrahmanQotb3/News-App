@@ -10,7 +10,7 @@ class TabsListViewModel extends ChangeNotifier {
 
   List<Sources> sources = [];
   String errorMessage = "";
-  NewsRepo newsRepo = NewsRepo(NewsRemoteDateSource(), NewsLocaldataSource(), InternetConnection());
+  NewsRepo newsRepo = NewsRepo(NewsRemoteDateSource(), NewsLocalDataSource(), InternetConnection());
 
   Future<void> loadTabsList(String categoryID) async {
     state = TabsListState.loading;

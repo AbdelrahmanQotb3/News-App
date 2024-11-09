@@ -11,7 +11,7 @@ class TabsDetailsViewModel extends ChangeNotifier{
   TabsDetailsState state = TabsDetailsState.loading;
   List<Article> articles = [];
   String errorMessage = '';
-  NewsRepo newsRepo = NewsRepo(NewsRemoteDateSource(), NewsLocaldataSource(), InternetConnection());
+  NewsRepo newsRepo = NewsRepo(NewsRemoteDateSource(), NewsLocalDataSource(), InternetConnection());
 
   void loadArticles(String sourceID) async {
     try{

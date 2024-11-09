@@ -6,7 +6,7 @@ import '../../../../model/articleResponse.dart';
 import '../../../../model/sourcesResponse.dart';
 
 class NewsRepo{
-  NewsLocaldataSource newsLocalDataSource;
+  NewsLocalDataSource newsLocalDataSource;
   NewsRemoteDateSource newsRemoteDateSource;
   InternetConnection connection ;
 
@@ -19,8 +19,8 @@ class NewsRepo{
       return response;
     }
     else{
-      SourceResponse response = await newsLocalDataSource.loadTabsList(categoryID);
-      return response;
+      SourceResponse? response = await newsLocalDataSource.loadTabsList(categoryID);
+      return response!;
     }
 
   }
@@ -32,8 +32,8 @@ class NewsRepo{
       newsLocalDataSource.saveArticles(sourceID, response);
       return response;
     }else{
-      ArticleResponse response = await newsLocalDataSource.loadTabDetails(sourceID);
-      return response;
+      ArticleResponse? response = await newsLocalDataSource.loadTabDetails(sourceID);
+      return response!;
     }
   }
 }
