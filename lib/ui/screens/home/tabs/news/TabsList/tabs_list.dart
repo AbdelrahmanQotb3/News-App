@@ -7,8 +7,6 @@ import 'package:news_app/ui/comman%20widgets/app_error.dart';
 import 'package:news_app/ui/comman%20widgets/app_loader.dart';
 import 'package:news_app/ui/screens/home/tabs/news/TabsDetails/tabs_details.dart';
 import 'package:news_app/ui/screens/home/tabs/news/TabsList/tabs_list_view_model.dart';
-import 'package:provider/provider.dart';
-
 import '../../../../../../Data/Repos/news_repo/data_sources/local_data_source/news_local_data_source_impl.dart';
 import '../../../../../../model/sourcesResponse.dart';
 
