@@ -9,7 +9,7 @@ class NewsLocalDataSourceImpl extends NewsLocalDataSource{
   @override
   Future<SourceResponse?> loadTabsList(String categoryID) async {
     CollectionReference tabsCollection =
-    FirebaseFirestore.instance.collection(FireStoreConstants.tabsCollectionName);
+    FirebaseFirestore.instance.collection(FireStoreConstants.tabsListCollectionName);
     DocumentSnapshot documentSnapshot = await tabsCollection.doc(categoryID).get();
     Map json = documentSnapshot.data() as Map;
     return SourceResponse.fromJson(json);
@@ -17,19 +17,24 @@ class NewsLocalDataSourceImpl extends NewsLocalDataSource{
 
   @override
   Future<ArticleResponse?> loadTabDetails(String sourceID) async{
-    return null ;
+    CollectionReference tabsDetailsCollection =
+        FirebaseFirestore.instance.collection(FireStoreConstants.tabsDetailsCollectionName);
+    DocumentSnapshot documentSnapshot = await tabsDetailsCollection.doc(sourceID).get();
+    Map json = documentSnapshot.data() as Map;
+    return ArticleResponse.fromJson(json);
 
   }
   @override
   Future<void> saveTabsResponse(String categoryID , SourceResponse response) async {
     CollectionReference tabsCollection =
-    FirebaseFirestore.instance.collection(FireStoreConstants.tabsCollectionName);
+    FirebaseFirestore.instance.collection(FireStoreConstants.tabsListCollectionName);
     tabsCollection.doc(categoryID).set(response.toJson());
   }
 
   @override
   Future<void> saveArticles(String sourceID , ArticleResponse response) async{
-
-
+    CollectionReference tabsDetailsCollection =
+        FirebaseFirestore.instance.collection(FireStoreConstants.tabsDetailsCollectionName);
+    tabsDetailsCollection.doc(sourceID).set(response.toJson());
   }
 }
