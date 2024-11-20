@@ -39,6 +39,7 @@ class _HomeState extends State<Home> {
         },
         child: Scaffold(
           appBar: AppBar(
+            actions: [Icon(Icons.search_rounded , size: 30,)],
             centerTitle: true,
             title: Text(
               "News App",
