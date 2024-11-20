@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:injectable/injectable.dart';
 import 'package:news_app/Data/Repos/news_repo/data_sources/local_data_source/news_local_data_source.dart';
 
 import '../../../../../Utilities/firestore_constants.dart';
 import '../../../../../model/articleResponse.dart';
 import '../../../../../model/sourcesResponse.dart';
 
+@Injectable(as:NewsLocalDataSource )
 class NewsLocalDataSourceImpl extends NewsLocalDataSource{
   @override
   Future<SourceResponse?> loadTabsList(String categoryID) async {

@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:news_app/Data/Repos/news_repo/data_sources/news_repo.dart';
 import 'package:news_app/model/sourcesResponse.dart';
 
+@injectable
 class TabsListViewModel extends Cubit<TabsListState> {
   NewsRepo repo ;
 

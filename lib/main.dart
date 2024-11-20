@@ -6,10 +6,12 @@ import 'package:news_app/ui/screens/home/tabs/news/TabsDetails/tabs_details.dart
 import 'package:news_app/ui/screens/home/tabs/news/TabsList/tabs_list.dart';
 import 'package:news_app/ui/screens/home/tabs/settings/settings_tab.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'di.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

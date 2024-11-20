@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:news_app/Data/Repos/news_repo/data_sources/news_repo_impl.dart';
-import 'package:news_app/Data/Repos/news_repo/data_sources/remote_data_sources/news_remot_data_source_impl.dart';
+import 'package:news_app/di.dart';
 import 'package:news_app/ui/comman%20widgets/app_error.dart';
 import 'package:news_app/ui/comman%20widgets/app_loader.dart';
 import 'package:news_app/ui/screens/home/tabs/news/TabsDetails/tabs_details.dart';
 import 'package:news_app/ui/screens/home/tabs/news/TabsList/tabs_list_view_model.dart';
-import '../../../../../../Data/Repos/news_repo/data_sources/local_data_source/news_local_data_source_impl.dart';
 import '../../../../../../model/sourcesResponse.dart';
 
 class TabsList extends StatefulWidget {
@@ -21,11 +18,7 @@ class TabsList extends StatefulWidget {
 
 class _TabsListState extends State<TabsList> {
   int currentTabIndex = 0;
-  TabsListViewModel viewModel = TabsListViewModel(NewsRepoImpl(
-    NewsRemoteDataSourceImpl(),
-    NewsLocalDataSourceImpl(),
-    InternetConnection()
-  ));
+  TabsListViewModel viewModel = getIt();
 
   @override
   void initState() {

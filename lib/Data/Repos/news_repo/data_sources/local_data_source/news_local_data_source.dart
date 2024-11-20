@@ -1,3 +1,5 @@
+import 'package:injectable/injectable.dart';
+
 import '../../../../../model/articleResponse.dart';
 import '../../../../../model/sourcesResponse.dart';
 

@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
+import 'package:injectable/injectable.dart';
 import 'package:news_app/Data/Repos/news_repo/data_sources/remote_data_sources/news_remote_data_source.dart';
 
 import '../../../../../model/articleResponse.dart';
 import '../../../../../model/sourcesResponse.dart';
 
+@Injectable(as:NewsRemoteDateSource )
 class NewsRemoteDataSourceImpl extends NewsRemoteDateSource{
   static String apiKey = "252ddd1becd44494a69378fa665e0d71";
 

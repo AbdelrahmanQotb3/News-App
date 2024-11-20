@@ -1,15 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:news_app/Data/Repos/news_repo/data_sources/news_repo_impl.dart';
+import 'package:news_app/di.dart';
 import 'package:news_app/model/articleResponse.dart';
 import 'package:news_app/ui/comman%20widgets/app_error.dart';
 import 'package:news_app/ui/comman%20widgets/app_loader.dart';
 import 'package:news_app/ui/screens/home/tabs/news/TabsDetails/tabs_details_view_model.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../../../Data/Repos/news_repo/data_sources/local_data_source/news_local_data_source_impl.dart';
-import '../../../../../../Data/Repos/news_repo/data_sources/remote_data_sources/news_remot_data_source_impl.dart';
 
 class TabsDetails extends StatefulWidget {
   final String sourceID ;
@@ -21,11 +17,7 @@ class TabsDetails extends StatefulWidget {
 }
 
 class _TabsDetailsState extends State<TabsDetails> {
-  TabsDetailsViewModel viewModel = TabsDetailsViewModel(NewsRepoImpl(
-      NewsRemoteDataSourceImpl(),
-      NewsLocalDataSourceImpl(),
-    InternetConnection()
-  ));
+  TabsDetailsViewModel viewModel = getIt();
 
   @override
   void initState() {
